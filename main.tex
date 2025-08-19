@@ -1,0 +1,162 @@
+\documentclass[11pt, notitlepage]{report}
+
+\usepackage{sectsty}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{mathtools}
+\usepackage{comment}
+\usepackage{colortbl}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage{amssymb}
+\usepackage[a4paper,total={6in,8in}]{geometry}
+\usepackage{tikz}
+\usepackage{environ}
+
+\renewcommand{\baselinestretch}{1.5} 
+
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+
+\newcommand{\RNum}[1]{\uppercase\expandafter{\romannumeral #1\relax}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\textbf{\color{doc}{\thesection}}}
+\renewcommand{\headrulewidth}{0pt}
+
+\fancypagestyle{plain}{%
+  \fancyhf{}% clear all header and footer fields
+  \fancyfoot[C]{\bfseries\color{myblue}\thepage}
+  \renewcommand{\headrulewidth}{0pt}%
+  \renewcommand{\footrulewidth}{0pt}%
+}
+
+
+\newtcolorbox{myproof}[1][]{
+    width=\linewidth,
+    sharp corners,   
+    center,
+    colback=gray!35,
+    title=\textit{\textbf{Proof:}},
+    coltitle=black,colframe=gray!35,
+    attach title to upper={\\},
+    #1,fontupper=\normalsize,breakable
+}
+
+
+\definecolor{myblue}{rgb}{0.44, 0.65, 0.82}
+\definecolor{doc}{HTML}{191971}
+\sectionfont{\color{doc}}
+\subsectionfont{\color{doc}}
+\subsubsectionfont{\color{doc}}
+\chapterfont{\color{doc}}
+
+\newtagform{myblue}[\textcolor{myblue}]{\color{myblue}(}{)}
+\usetagform{myblue}
+
+% Define colors for theorem and proof boxes
+\definecolor{theorembg}{RGB}{240,248,255} % Light blue for theorem background
+\definecolor{theoremframe}{RGB}{0,100,180} % Darker blue for theorem frame
+\definecolor{proofbg}{RGB}{255,250,205}   % Light yellow for proof background
+\definecolor{proofframe}{RGB}{180,100,0}  % Darker yellow for proof frame
+
+% Theorem environment definition
+\newtcolorbox[auto counter, number within=section]{theorem}{
+    width=\textwidth,
+    sharp corners,
+    center,
+    colback=myblue!20,
+    colframe=myblue,
+    breakable, % Allows box to break across pages if needed
+    enhanced,  % Improves appearance and allows for better customization
+    title={Theorem \thetcbcounter:},
+    fonttitle=\bfseries,coltitle=black,attach title to upper={\\},fontupper=\normalsize,breakable,
+}
+
+% Theorem environment definition
+\newtcolorbox[auto counter, number within=section]{prop}{
+    width=\textwidth,
+    sharp corners,
+    center,
+    colback=myblue!20,
+    colframe=myblue,
+    breakable, % Allows box to break across pages if needed
+    enhanced,  % Improves appearance and allows for better customization
+    title={Proposition \thetcbcounter:},
+    fonttitle=\bfseries,coltitle=black,attach title to upper={\\},fontupper=\normalsize,breakable,
+}
+
+% Proof environment definition (nested within theorem)
+\newtcolorbox{proof}{
+    width=\linewidth,
+    sharp corners,   
+    center,
+    colback=gray!20,
+    title=\textit{Proof:},
+    coltitle=black,colframe=gray!35,
+    attach title to upper={\\},fontupper=\normalsize,enforce breakable, break at=18cm
+}
+
+
+
+% Definition environment definition
+\newtcolorbox[auto counter, number within=section]{definition}{
+    width=\textwidth,
+    sharp corners,
+    center,
+    colback=white,
+    colframe=black,
+    breakable, % Allows box to break across pages if needed
+    enhanced,  % Improves appearance and allows for better customization
+    title={Definition \thetcbcounter:},
+    fonttitle=\bfseries,coltitle=black,attach title to upper={\\},fontupper=\normalsize,
+}
+
+\geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+
+\usepackage{titlesec}
+
+\titleformat{\chapter}[display]
+  {\color{doc}\normalfont\bfseries}{}{0pt}{\huge}
+
+  \usepackage[dvipsnames]{xcolor}
+
+\usepackage{tocloft}
+
+\renewcommand\cfttoctitlefont{\Large\bfseries\color{doc}}
+\renewcommand\cftaftertoctitle{\hfill\mbox{}}
+\cftsetindents{section}{0em}{2em}
+\cftsetindents{subsection}{0em}{2em}
+\setlength{\cftaftertoctitleskip}{-1em}
+
+
+
+\begin{document}
+
+\title{Math Notes}
+\author{Matthew Satter}
+\date{\today}
+\maketitle
+\vspace{-2cm}
+{\let\clearpage\relax \tableofcontents}
+
+\thispagestyle{empty}
+
+\include{Complex}
+
+\include{Manifolds}
+
+\include{RiemannSurfaces}
+
+\include{Exercises}
+
+\end{document}

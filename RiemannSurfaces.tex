@@ -1,0 +1,56 @@
+
+
+
+
+
+
+\newcommand{\vu}{\vec{u}}
+\newcommand{\nhat}{\widehat{n}}
+\newcommand{\pd}[2]{\df{\partial {#1}}{\partial {#2}}}
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\df}[2]{\dfrac{{#1}}{{#2}}}
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\newcommand{\ds}{\displaystyle}
+
+\numberwithin{equation}{chapter}
+
+\def\resetstyle#1{{\normalsize\rm\color[rgb]{0,0,0}\noindent#1}}
+
+
+
+\chapter{Riemann Surfaces}
+
+\section{Stereographic Projection}
+
+
+
+Consider $\mathbb{R}^3$, and let $\mathbb{C}=\left\{(x_1,x_2,x_3)\in\mathbb{R}^3: x_3=0\right\}$ so that the complex plane is viewed as the $x_1x_2$-plane in $\mathbb{R}^3$. Also, let $S^2=\left\{(x_1,x_2,x_3)\in\mathbb{R}^3: x_1^2+x_2^2+x_3^2=1\right\}$ be the standard unit sphere and let $\vec{N}=\left(0,0,1\right)$ be the ``north pole'' of the unit sphere.
+
+We seek to project points from $S^2\setminus \vec{N}$ to $\mathbb{C}$ by drawing a projective line through $\vec{N}$ and $\vec{x}\in S^2\setminus \vec{N}$ and then finding the point $p(\vec{x})\in\mathbb{C}$ where the projective line intersects the complex plane. To find a formula for such a mapping, we could first consider the inverse mapping. Given $z=z_1+iz_2\in\mathbb{C}$, what $\vec{x}\in S^2\setminus\vec{N}$ gets projected there?
+
+To find this inverse mapping, we first parameterize the line segment $\vec{\ell}$ connecting $\vec{N}$ to $z$ by $\vec{\ell}(t)=\left\{\begin{bsmallmatrix}0\\ \\ 0\\\\1\end{bsmallmatrix}t+{\begin{bsmallmatrix}z_1 \\ \\ z_2 \\ \\ 0 
+\end{bsmallmatrix}}\left(1-t\right):t\in[0,1]\right\}.$ To find where this line segment intersects the unit sphere, we look for a $t_0$ in $(0,1)$ such that $\left|\left|\vec{\ell}(t_0)\right|\right|=1$. This gives us that $t_0^2+|z|^2(1-t_0)^2=1$ and after moving things around that $|z|^2(1-t_0)^2=1-t_0^2$. Factoring the left side gives us \begin{equation}
+    |z|^2(1-t_0)^2=(1+t_0)(1-t_0).\label{st1}
+\end{equation} 
+
+If $t_0=1$, since $\vec{\ell}(1)=\vec{N}$, then the projective line would intersect the north pole with a multiplicity of two, (and thus the projective line would be tangent to $S^2$ at the north pole). In this case, we will say that the projective line intersects $\mathbb{C}$ at $\infty$ in the extended complex plane, but cannot intersect at any $z$ in the complex plane.
+
+Since we assumed the projection point actually lives in $\mathbb{C}$, then we can assume $t_0\neq 1$, and can divide both sides of equation \eqref{st1} by $1-t_0$ to get \begin{equation}\begin{split}|z|^2(1-t_0)&=1+t_0\\|z|^2-1&=t_0(1+|z|^2)\\t_0&=\dfrac{|z|^2-1}{|z|^2+1}.\\\end{split}\end{equation}
+
+We then see that the point on $S^2$ projected to $z$ is given by \begin{equation}\vec{\ell}(t_0)=\left(\dfrac{2z_1}{|z|^2+1},\dfrac{2z_2}{|z|^2+1},\dfrac{|z|^2-1}{|z|^2+1}\right)=\left(\dfrac{z-\overline{z}}{|z|^2+1},\dfrac{-i(z-\overline{z})}{|z|^2+1},\dfrac{|z|^2-1}{|z|^2+1}\right).\end{equation} To get our original projection mapping, we can look for an inverse. If $x_1=\df{2z_1}{|z|^2+1}$, $x_2=\df{2z_2}{|z|^2+1}$ and $x_3=\df{|z|^2-1}{|z|^2+1}$, note that \begin{equation}1-x_3=\dfrac{|z|^2+1-\left(|z|^2-1\right)}{|z|^2+1}=\df{2}{|z|^2+1}=\df{x_1}{z_1}=\df{x_2}{z_2}.\end{equation}
+
+So as long as $x_3\neq 1$ (which once again is true as long as the projective line is not tangent to the north pole), we can say $z_1=\df{x_1}{1-x_3}$ and $z_2=\df{x_2}{1-x_3}$. We summarize this derivation formally with the following definitions:
+
+\begin{definition}[]
+    The \textbf{\textcolor{myblue}{stereographic projection}} is a map $p_+:S^2\setminus\vec{N}\to \mathbb{C}$ defined by \begin{equation}p_+((x_1,x_2,x_3))=\df{x_1+ix_2}{1-x_3}.\end{equation}
+\end{definition}
+The ``+'' subscript on the stereographic projection indicates that the north pole was used as one of the projective line points. Repeating the derivation with the south pole gives an alternate projection $p_-((x_1,x_2,x_3))=\df{x_1+ix_2}{1+x_3}$. 
+
+\begin{definition}The \textbf{\textcolor{myblue}{extended complex plane}} $\widehat{\mathbb{C}}$ is the set $\widehat{\mathbb{C}}=\mathbb{C}\cup\{\infty\}$.
+\end{definition}
+
+
+\section{Riemann Surfaces}
